@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Title } from './components/Title'
+import { Top } from './components/Top'
 import { Footer } from './components/Footer'
-import { Bottom } from './components/Bottom'
 
 // 引入垫片兼容IE
 require('es5-shim');
@@ -22,10 +22,10 @@ export default class Init extends React.Component {
     render() {
         return (
             <div>
-                { Title({ETC: '500',ETH: '500',ETP: '500'}) }
-                {this.props.children}
-                { Bottom() }
-                { Footer() }
+              {/* { Title({ETC: '500',ETH: '500',ETP: '500'}) } */}
+              {/* { Top() } */}
+              {this.props.children}
+              {/* { Footer() } */}
             </div>
         )
     }

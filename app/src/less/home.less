@@ -1,3 +1,7 @@
+.homeStyle {
+  width: 1200px;
+  margin: 0 auto;
+
 .stars {
     color: #f46e65;
     display: inline-block;
@@ -8,4 +12,56 @@
 }
 .recharts-wrapper {
     margin: 0 auto;
+}
+
+.card-img {
+  display: inline-block;
+  margin: 0 50px 0 16px;
+}
+
+.card-div {
+  display: inline-block;
+  vertical-align: top;
+
+  p {
+    margin-top: 15px;
+    color: #777;
+    font-size: 15px;
+  }
+}
+
+/* =========重写 antd - Card 样式========  */
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(70, 70, 70, .2);
+  cursor: pointer;
+
+  .ant-card-head {
+    color: #516271;
+    background: #e2e2e2;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #dbdbdb;
+
+    .ant-card-head-title {
+      font-size: 16px
+    }
+  }
+
+  .ant-card-body {
+    padding: 20px 24px;
+
+    p {
+      text-align: left;
+    }
+  }
+}
+
+.ant-card:hover {
+  border: none;
+  box-shadow: 0 0 40px rgba(50, 50, 50, .4);
+}
+.ant-col-12 {
+  margin: 50px 0 0;
+}
 }

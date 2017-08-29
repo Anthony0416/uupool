@@ -9,16 +9,17 @@ export const Footer = () => {
     fontSize: '15px',
     width: '100%',
     textAlign: 'center',
-  },
-  link = {
-    color: '#dbdbdb'
   };
 
   return (
     <div style={footerStyle}>
-      <p>双优客服全天为您提供服务</p>
+      <p>ManisPool客服全天为您提供服务</p>
       <p>QQ群：123456789（1群）123456789（2群推荐）商务联系：123456@123.com</p>
-      <p>双优矿池 © 2017 UUPOOL <a href='#' style={link}>粤ICP备15057025号</a> 友情链接: <a href='#' style={link}>以太经典</a> <a href='#' style={link}>以太坊</a> <a href='#' style={link}>元界</a></p>
+      <p>深圳市算力科技有限公司 © 2017 ManisPool <a href='http://www.miibeian.gov.cn/'className='link'>粤ICP备15057025号</a> &nbsp;友情链接: &nbsp;
+        <a href='https://etcchain.com/' className='link'>以太经典</a> &nbsp;
+        <a href='https://ethereum.org/' className='link'>以太坊</a> &nbsp;
+        <a href='https://mvs.live/' className='link'>元界</a>
+      </p>
     </div>
   )
 }
