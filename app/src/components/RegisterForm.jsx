@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Tooltip, Select, Cascader, Row, Col, Button, AutoComplete } from 'antd';
+import { Form, Input, Tooltip, Select, Cascader, Row, Col, Button, AutoComplete, message } from 'antd';
 import { browserHistory } from 'react-router';
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -9,12 +9,21 @@ class Registe extends React.Component {
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
+    imgurl: 'http://47.52.42.88/index.php?s=Api/verify',
+    loading: false,
   };
   handleSubmit = (e) => {
+    this.setState({loading: true})
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        console.log(values.username);
+        $.ajax({
+          url: ''
+        })
+      } else {
+        message.erroe('')
       }
     });
   }
@@ -24,6 +33,15 @@ class Registe extends React.Component {
   }
   handleLogin = (e) => {
     browserHistory.push('login');
+  }
+  handleChange = () => {
+    this.setState({imgurl: '#'})
+    console.log(this.state.imgurl);
+    let _this = this;
+    setTimeout(function(){
+      _this.setState({imgurl: 'http://47.52.42.88/index.php?s=Api/verify'})
+      console.log(_this.state.imgurl);
+    },0)
   }
   checkPassword = (rule, value, callback) => {
     const form = this.props.form;
@@ -68,7 +86,7 @@ class Registe extends React.Component {
     };
 
     return(
-      <div className='register'>
+      <div className='registerForm'>
         <Form onSubmit = { this.handleSubmit }>
         <FormItem
           {...formItemLayout}
@@ -77,9 +95,9 @@ class Registe extends React.Component {
         >
           {getFieldDecorator('username', {
             rules: [{
-              type: 'string', message: 'The input is not valid E-mail!',
+              type: 'string', message: '请输入字母和数字!',
             }, {
-              required: true, message: 'Please input your E-mail!',
+              required: true, message: '请输入您的用户名!',
             }],
           })(
             <Input />
@@ -99,7 +117,7 @@ class Registe extends React.Component {
                 required: true, message: '请输入您的电子邮箱!',
               }],
             })(
-              <Input />
+              <Input onBlur={checkEmail} />
             )}
           </FormItem>
           <FormItem
@@ -137,7 +155,9 @@ class Registe extends React.Component {
             label="手机号码"
           >
             {getFieldDecorator('phone', {
-              rules: [{ required: false, message: 'Please input your phone number!' }],
+              rules: [{ required: true, message: '请输入您的手机号!' },{
+                len: 11, message: '请输入正确的手机号码！'
+              }],
             })(
               <Input />
             )}
@@ -155,15 +175,15 @@ class Registe extends React.Component {
                 )}
               </Col>
               <Col span={6}>
-                <img src="" height="32px" width="97px"/>
+                <img src={this.state.imgurl} height="32px" width="97px" onClick={this.handleChange}/>
               </Col>
             </Row>
           </FormItem>
           <FormItem {...tailFormItemLayout} style={{ marginBottom: 8 }}>
-            <Button type="primary" htmlType="submit" style={{width: '420px',height: '40px'}}>注 册</Button>
+            <Button loading={this.state.loading} type="primary" htmlType="submit" style={{width: '420px',height: '40px'}}>注 册</Button>
           </FormItem>
           <FormItem {...tailFormItemLayout}>
-            <span>已有账户? 请<a onClick={this.handleLogin}>登 录</a></span>
+            <span>已有账户? <a onClick={this.handleLogin}>立即登录</a></span>
           </FormItem>
         </Form>
       </div>

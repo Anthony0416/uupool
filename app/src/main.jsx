@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Title } from './components/Title'
+import Title from './components/Title'
 import { Top } from './components/Top'
 import { Footer } from './components/Footer'
 
@@ -22,10 +22,10 @@ export default class Init extends React.Component {
     render() {
         return (
             <div>
-              {/* { Title({ETC: '500',ETH: '500',ETP: '500'}) } */}
-              {/* { Top() } */}
+              <Title/>
+              { Top() }
               {this.props.children}
-              {/* { Footer() } */}
+              { Footer() }
             </div>
         )
     }

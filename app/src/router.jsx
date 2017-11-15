@@ -8,10 +8,6 @@ import Home from './pages/home';
 import Pool from './pages/pool';
 import Register from './pages/register'
 import Login from './pages/login'
-import User from './pages/user';
-import Setting from './pages/setting';
-import List from './pages/list';
-import Report from './pages/report';
 import NotFoundPage from './pages/nofind';
 
 // 配置路由，并将路由注入到id为init的DOM元素中
@@ -22,7 +18,6 @@ ReactDOM.render(
             <Route path="pool/:id" component = {Pool}/>
             <Route path="register" component = {Register} />
             <route path="login" component = { Login } />
-            <Route path="user" component={User}/>
             {/* 404 */}
             <Route path='404' component={NotFoundPage} />
             {/* 其他重定向到 404 */}

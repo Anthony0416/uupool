@@ -34,32 +34,37 @@ export default class Home extends React.Component {
               key: 'ETHEREUM CLASSIC ( ETC )',
               img: 'http://www.uupool.cn/images/etc.png',
               price: '1%',
-              address: 'dcr.uupool.cn:3252',
-              get: '0.01712232 DCR 每 Ghash/s'
+              address: 'manispool.com:3252',
+              get: '0.01712232 DCR 每 Ghash/s',
+              path: '#'
             },{
               key: 'ETHEREUM( ETH )',
               img: 'http://www.uupool.cn/images/eth.png',
               price: '1%',
-              address: 'dcr.uupool.cn:3252',
-              get: '0.01712232 DCR 每 Ghash/s'
+              address: 'manispool.com:3252',
+              get: '0.01712232 DCR 每 Ghash/s',
+              path: '/eth/index.html'
             },{
               key: 'METAVERSE ( ETP )',
               img: 'http://www.uupool.cn/images/etp.png',
               price: '1%',
-              address: 'dcr.uupool.cn:3252',
-              get: '0.01712232 DCR 每 Ghash/s'
+              address: 'manispool.com:3252',
+              get: '0.01712232 DCR 每 Ghash/s',
+              path: '#'
             },{
               key: 'ZCASH (ZEC)',
               img: 'http://www.uupool.cn/images/zec.png',
               price: '1%',
-              address: 'dcr.uupool.cn:3252',
-              get: '0.01712232 DCR 每 Ghash/s'
+              address: 'manispool.com:3252',
+              get: '0.01712232 DCR 每 Ghash/s',
+              path: '#'
             },{
               key: 'DECRED ( DCR )',
               img: 'http://www.uupool.cn/images/dcr.png',
               price: '1%',
-              address: 'dcr.uupool.cn:3252',
-              get: '0.01712232 DCR 每 Ghash/s'
+              address: 'manispool.com:3252',
+              get: '0.01712232 DCR 每 Ghash/s',
+              path: '#'
             }]
             console.log(data);
             // 需要绑定this
@@ -76,14 +81,16 @@ export default class Home extends React.Component {
               {this.state.idx.map((item,index) => {
                 return  (
                   <Col span="12" key={index}>
-                    <Card title={item.key} bordered={false}>
-                      <img src={item.img} width='115' height='111' className='card-img' />
-                      <div className='card-div'>
-                        <p>费率：{item.price}</p>
-                        <p>矿池地址：{item.address}</p>
-                        <p>24小时平均收益：{item.get}</p>
-                      </div>
-                    </Card>
+                    <a href={item.path}>
+                      <Card title={item.key} bordered={false}>
+                        <img src={item.img} width='115' height='111' className='card-img' />
+                        <div className='card-div'>
+                          <p>费率：{item.price}</p>
+                          <p>矿池地址：{item.address}</p>
+                          <p>24小时平均收益：{item.get}</p>
+                        </div>
+                      </Card>
+                    </a>
                   </Col>
                 )
               })}

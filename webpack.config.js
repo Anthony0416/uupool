@@ -1,7 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin'); 
-var OpenBrowserPlugin = require('open-browser-webpack-plugin'); 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+var proxy = require('http-proxy-middleware');
 
 module.exports = {
 
@@ -11,16 +12,16 @@ module.exports = {
         hot: true,
         inline: true,
         progress: true,
-        contentBase: "./app", 
-        port: 8080
+        contentBase: "./app",
+        port: 8080,
         // 开发过程中可设置代理
-        // proxy: {
-        //    '/api/**': {
-        //      target: 'http://test.com',
-        //      secure: false,
-        //      changeOrigin: true
-        //    }
-        // }
+        proxy: {
+           '/index.php?s=Api/**': {
+             target: 'http://47.52.42.88:9010/index.php?s=Api/',
+             secure: false,
+             changeOrigin: true
+           }
+        }
     },
     devtool:"cheap-module-eval-source-map",  //在控制台的sources下，点开可以看到webpack://目录，里面可以直接看到我们开发态的源代码，这样方便我们直接在浏览器中打断点调试
     entry: {

@@ -9,6 +9,7 @@ class Log extends React.Component {
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
+    imgurl: 'http://47.52.42.88/index.php?s=Api/verify',
   };
   handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +26,15 @@ class Log extends React.Component {
   handleRegister = () => {
     browserHistory.push('register');
   }
+  handleChange = () => {
+    this.setState({imgurl: '#'})
+    console.log(this.state.imgurl);
+    let _this = this;
+    setTimeout(function(){
+      _this.setState({imgurl: 'http://47.52.42.88/index.php?s=Api/verify'})
+      console.log(_this.state.imgurl);
+    },0)
+  }
   checkPassword = (rule, value, callback) => {
     const form = this.props.form;
     if (value && value !== form.getFieldValue('password')) {
@@ -40,7 +50,6 @@ class Log extends React.Component {
     }
     callback();
   }
-
   render(){
     const { getFieldDecorator } = this.props.form;
     const { autoCompleteResult } = this.state;
@@ -68,7 +77,7 @@ class Log extends React.Component {
     };
 
     return(
-      <div className='register'>
+      <div className='loginForm'>
         <Form onSubmit = { this.handleSubmit }>
         <FormItem
           style={{ marginBottom: 8 }}
@@ -116,7 +125,7 @@ class Log extends React.Component {
                 )}
               </Col>
               <Col span={6}>
-                <img src="" height="32px" width="97px"/>
+                <img src={this.state.imgurl} height="32px" width="97px" onClick={this.handleChange}/>
               </Col>
             </Row>
           </FormItem>
